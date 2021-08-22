@@ -1,0 +1,207 @@
+<h1 mat-dialog-title>{{ModelTitle}}</h1>
+<div mat-dialog-content>
+    <table>
+        <tr>
+            <td>
+                <mat-form-field>
+                    <input placeholder="Name" matInput [(ngModel)]="data.Name" [formControl]="nameFormControl" [errorStateMatcher]="matcher" (keypress)="keyPressAlphanumeric($event)">
+                    <mat-error *ngIf="nameFormControl.hasError('required')">
+                        Name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <input placeholder="FatherName/HusbandName" matInput [(ngModel)]="data.FatherName" [formControl]="fnameFormControl" [errorStateMatcher]="matcher" (keypress)="keyPressAlphanumeric($event)">
+                    <mat-error *ngIf="fnameFormControl.hasError('required')">
+                        FatherName is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <input placeholder="CNIC" matInput [(ngModel)]="data.CNIC" [formControl]="cnicFormControl" [errorStateMatcher]="matcher" (keypress)="keyPressNumbers($event)">
+                    <mat-error *ngIf="cnicFormControl.hasError('required')">
+                        CNIC is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <input placeholder="PostalAddress" matInput [(ngModel)]="data.PostalAddress" [formControl]="PostalAddressFormControl" [errorStateMatcher]="matcher" (keypress)="keyPressAdress($event)">
+                    <mat-error *ngIf="PostalAddressFormControl.hasError('required')">
+                        PostalAddress is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field> 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <input placeholder="PermanentAddress" matInput [(ngModel)]="data.PermanentAddress"  [formControl]="PermanentAddressFormControl" [errorStateMatcher]="matcher" (keypress)="keyPressAdress($event)">
+                    <mat-error *ngIf="PermanentAddressFormControl.hasError('required')">
+                        PermanentAddress is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>  
+            </td>
+            <td>
+           
+                <mat-form-field class="example-full-width">
+                    <input placeholder="ContactNumber" matInput [(ngModel)]="data.ContactNumber" [formControl]="ContactNumberFormControl" [errorStateMatcher]="matcher" (keypress)="keyPressNumbers($event)">
+                    <mat-error *ngIf="ContactNumberFormControl.hasError('required')">
+                        ContactNumber is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>  
+            </td>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <input placeholder="EmailAddress" matInput [(ngModel)]="data.EmailAddress" [formControl]="EmailAddressFormControl" [errorStateMatcher]="matcher" (keypress)="keyPressEmail($event)">
+                    <mat-error *ngIf="EmailAddressFormControl.hasError('email') && !EmailAddressFormControl.hasError('required')">
+                        Please enter a valid email address
+                      </mat-error>
+                    <mat-error *ngIf="EmailAddressFormControl.hasError('required')">
+                        EmailAddress is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>  
+            </td>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <input placeholder="Religion" matInput [(ngModel)]="data.Religion" [formControl]="ReligionFormControl" [errorStateMatcher]="matcher" (keypress)="keyPressAlphanumeric($event)">
+                    <mat-error *ngIf="ReligionFormControl.hasError('required')">
+                        Religion is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>  
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field>
+                    <mat-label>District</mat-label>
+                    <mat-select [(ngModel)] ="data.DistrictID" [formControl]="DistrictFormControl" [errorStateMatcher]="matcher">
+                      <mat-option *ngFor="let district of DROPDOWN_LIST" [value]="district.DistrictID">
+                        {{district.DistrictName}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="DistrictFormControl.hasError('required')">
+                        Select required <strong>District</strong>
+                    </mat-error>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <mat-label>Gender</mat-label>
+                    <mat-select [(ngModel)] ="data.GenderID" [formControl]="GenderFormControl" [errorStateMatcher]="matcher">
+                      <mat-option *ngFor="let gender of Gender_DROPDOWN" [value]="gender.GenderID">
+                        {{gender.Gender}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="GenderFormControl.hasError('required')">
+                        Select required <strong>Gender</strong>
+                    </mat-error>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <mat-label>MartialStatus</mat-label>
+                    <mat-select [(ngModel)] ="data.StatusID" [formControl]="MartialStatusFormControl" [errorStateMatcher]="matcher">
+                      <mat-option *ngFor="let status of Status_DROPDOWN" [value]="status.StatusID">
+                        {{status.Status}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="MartialStatusFormControl.hasError('required')">
+                        Select required <strong>MartialStatus</strong>
+                    </mat-error>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <mat-label>Designation</mat-label>
+                    <mat-select [(ngModel)] ="data.DesignationID" [formControl]="DesignationFormControl" [errorStateMatcher]="matcher">
+                      <mat-option *ngFor="let Designation of Designation_DROPDOWN" [value]="Designation.DesignationID">
+                        {{Designation.Designation}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="DesignationFormControl.hasError('required')">
+                        Select required <strong>Designation</strong>
+                    </mat-error>
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field>
+                    <mat-label>Campus</mat-label>
+                    <mat-select [(ngModel)] ="data.CampusID" [formControl]="CampusFormControl" [errorStateMatcher]="matcher">
+                      <mat-option *ngFor="let Campus of campus_DROPDOWN" [value]="Campus.CampusID">
+                        {{Campus.Campus}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="CampusFormControl.hasError('required')">
+                        Select required <strong>Campus</strong>
+                    </mat-error>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <mat-label>Scale</mat-label>
+                    <mat-select [(ngModel)] ="data.ScaleID" [formControl]="ScaleFormControl" [errorStateMatcher]="matcher">
+                      <mat-option *ngFor="let Scale of Scale_DROPDOWN" [value]="Scale.ScaleID">
+                        {{Scale.Scale}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="ScaleFormControl.hasError('required')">
+                        Select required <strong>Scale</strong>
+                    </mat-error>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <input placeholder="Nationality" matInput [(ngModel)]="data.Nationality" [formControl]="NationalityFormControl" [errorStateMatcher]="matcher" (keypress)="keyPressAlphanumeric($event)">
+                    <mat-error *ngIf="NationalityFormControl.hasError('required')">
+                        Nationality is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>  
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field>
+                    <mat-label>Date of Birth</mat-label>
+                    <input matInput [matDatepicker]="DOB" [(ngModel)]="data.DOB" [formControl]="DOBFormControl" [errorStateMatcher]="matcher"
+                    (ngModelChange)='dateChanged($event)'>
+                    <mat-datepicker-toggle matSuffix [for]="DOB"></mat-datepicker-toggle>
+                    <mat-datepicker #DOB></mat-datepicker>
+                    <mat-error *ngIf="DOBFormControl.hasError('required')">
+                        Date of Birth is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <mat-label>Appointment Date</mat-label>
+                    <input matInput [matDatepicker]="AppointmentDate" [(ngModel)]="data.AppointmentDate" [formControl]="AppointmentDateFormControl" [errorStateMatcher]="matcher">
+                    <mat-datepicker-toggle matSuffix [for]="AppointmentDate"></mat-datepicker-toggle>
+                    <mat-datepicker #AppointmentDate></mat-datepicker>
+                    <mat-error *ngIf="AppointmentDateFormControl.hasError('required')">
+                        Appointment Date is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <mat-label>Confirmation Date</mat-label>
+                    <input matInput [matDatepicker]="ConfirmationDate" [(ngModel)]="data.ConfirmationDate" [formControl]="ConfirmationDateFormControl" [errorStateMatcher]="matcher">
+                    <mat-datepicker-toggle matSuffix [for]="ConfirmationDate"></mat-datepicker-toggle>
+                    <mat-datepicker #ConfirmationDate></mat-datepicker>
+                    <mat-error *ngIf="ConfirmationDateFormControl.hasError('required')">
+                        Confirmation Date is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </td>
+        </tr>
+    </table>
+</div>
+<div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>{{text}}</button>
+    <button mat-button (click)="onNoClick()">Close</button>
+</div>

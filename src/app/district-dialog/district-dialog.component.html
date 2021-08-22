@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>{{ModelTitle}}</h1>
+<div mat-dialog-content>
+    <mat-form-field>
+        <input placeholder="DistrictName" matInput [(ngModel)]="data.name" [formControl]="DistrictFormControl" [errorStateMatcher]="matcher" (keypress)="keyPressAlphanumeric($event)">
+        <mat-error *ngIf="DistrictFormControl.hasError('required')">
+            District is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>{{text}}</button>
+    <button mat-button (click)="onNoClick()">Close</button>
+</div>

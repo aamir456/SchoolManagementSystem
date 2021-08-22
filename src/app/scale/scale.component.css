@@ -1,0 +1,20 @@
+.navbar {
+    justify-content: space-between;
+}
+table {
+    width: 100%;
+  }
+
+  
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+} 
+td, th {
+    width: 25%;
+}
+.btn {
+    display: flex;
+    justify-content: left;
+    width: 120px;
+}
